@@ -1,0 +1,13 @@
+html {
+    scroll-behavior: smooth;
+}
+.movieCard {
+    display: flex;
+    justify-content: center;
+}
+.card-text {
+    font-size: .5rem;
+}
+.checked {
+    color: orangered;
+}
