@@ -1,7 +1,13 @@
 html {
     scroll-behavior: smooth;
 }
+body {
+    background-color: gray;
+}
 
+
+
+/*MOVIE CARDS*/
 .movieCard {
     display: flex;
     margin: auto;
@@ -11,14 +17,13 @@ html {
     padding-top: 10px;
 }
 
-body {
-    background-color: gray;
-}
-
 .card-text {
     font-size: .5rem;
 }
-
+/*STARS*/
 .checked {
     color: orangered;
 }
+
+
+/*ANIMATIONS*/
