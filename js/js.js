@@ -39,21 +39,16 @@ function renderMovies(db) {
 }
 
 
-// DELETE BUTTON
-// $('#delete').on('click', )
 
 
 
-
-
-
-
+// GET ADDED MOVIE OBJECT FROM API
 $('#addMovie').on ('click', function () {
     let movieInput = $('#addName').val()
     console.log(movieInput)
 
     $.get(`https://api.themoviedb.org/3/search/movie?api_key=36bae576330e105013948f7fc0b734c0&language=en-US&query=${movieInput}&page=1&include_adult=false`).done(function (db) {
         console.log(db);
-        
+
     })
 })
