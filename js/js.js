@@ -11,11 +11,11 @@ function renderMovies() {
                                     <div class="flip-card">
                                         <div class="flip-card-inner">
                                             <div class="flip-card-front">
-                                                <img class="card-img-top" src="http://image.tmdb.org/t/p/original/8c4a8kE7PizaGQQnditMmI1xbRp.jpg" alt="">
+                                                <img class="card-img-top" src="http://image.tmdb.org/t/p/original/${data[i].poster_path}" alt="">
                                             </div>
                                             <div class="flip-card-back">
-                                                <h5 class="movieTitle">${data[i].title}</h5>
-                                                <p class="movieText">${data[i].plot} </p>
+                                                <h5 class="movieTitle">${data[i].original_title}</h5>
+                                                <p class="movieText">${data[i].overview} </p>
                                                 <button id="edit" type="button">EDIT</button>
                                                 <button id="delete" type="button">DELETE</button>
                                                 <button id="watch" type="button">ADD TO WATCH</button>
