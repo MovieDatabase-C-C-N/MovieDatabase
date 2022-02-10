@@ -9,8 +9,7 @@ body {
 
 /*MOVIE CARDS*/
 .movieCard {
-    display: flex;
-    margin: auto;
+
 }
 
 .card-img-top{
@@ -18,7 +17,7 @@ body {
 }
 
 .card-text {
-    font-size: .5rem;
+    font-size: .7rem;
 }
 /*STARS*/
 .checked {

@@ -12,13 +12,15 @@ function renderMovies() {
             <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
                 <p class="card-text">${data[i].plot} </p>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
             </div>
-    </div>`
+            <div class="stars">
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star"></span>
+                 <span class="fa fa-star"></span>
+            </div>
+        </div>`
 
             $('.movieCard').append(filmCard);
         }
