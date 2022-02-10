@@ -8,6 +8,15 @@ body {
 }
 
 
+/*NAVBAR*/
+.navbar {
+background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+}
+
+
+
 /*MOVIE CARDS*/
 .movieCards {
     display: flex;
@@ -20,7 +29,7 @@ body {
 .card-img-top{
     max-width: fit-content;
     max-height: fit-content;
-    box-shadow: 0 0 20px 0 grey;
+    box-shadow: 0 0 5px 0 grey;
 }
 
 .flip-card {
