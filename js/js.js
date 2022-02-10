@@ -7,18 +7,20 @@ function renderMovies() {
         console.log(data)
 
         for (i = 0; i < data.length; i++) {
-            let filmCard = `<div class="card col-3 p-3 m-3 shadow">
+            let filmCard = `<div class="card col-3 mt-5 shadow">
         <img class="card-img-top" src="${data[i].poster}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${data[i].title}</h5>
                 <p class="card-text">${data[i].plot} </p>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
             </div>
-    </div>`
+            <div class="stars">
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star checked"></span>
+                 <span class="fa fa-star"></span>
+                 <span class="fa fa-star"></span>
+            </div>
+        </div>`
 
             $('.movieCard').append(filmCard);
         }

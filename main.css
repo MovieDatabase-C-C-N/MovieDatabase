@@ -1,13 +1,28 @@
 html {
     scroll-behavior: smooth;
 }
+body {
+    background-color: gray;
+}
+
+
+
+/*MOVIE CARDS*/
 .movieCard {
-    display: flex;
-    justify-content: center;
+
 }
+
+.card-img-top{
+    padding-top: 10px;
+}
+
 .card-text {
-    font-size: .5rem;
+    font-size: .7rem;
 }
+/*STARS*/
 .checked {
     color: orangered;
 }
+
+
+/*ANIMATIONS*/
