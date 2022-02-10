@@ -2,31 +2,41 @@ const glitchURL = "https://tartan-quill-libra.glitch.me/movies";
 
 renderMovies();
 
+// GENERATE MOVIE CARDS
 function renderMovies() {
     $.get(glitchURL).done(function (data) {
         console.log(data)
-
-        for (i = 0; i < data.length; i++) {
-            let filmCard = `<div class="card col-3 mt-5 shadow">
-        <img class="card-img-top" src="${data[i].poster}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">${data[i].title}</h5>
-                <p class="card-text">${data[i].plot} </p>
-            </div>
-            <div class="stars">
-                 <span class="fa fa-star checked"></span>
-                 <span class="fa fa-star checked"></span>
-                 <span class="fa fa-star checked"></span>
-                 <span class="fa fa-star"></span>
-                 <span class="fa fa-star"></span>
-            </div>
-        </div>`
-
-            $('.movieCard').append(filmCard);
+        for (let i = 0; i < data.length; i++) {
+            let filmCard = `
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <img class="card-img-top" src="http://image.tmdb.org/t/p/original/8c4a8kE7PizaGQQnditMmI1xbRp.jpg" alt="">
+                                            </div>
+                                            <div class="flip-card-back">
+                                                <h5 class="movieTitle">${data[i].title}</h5>
+                                                <p class="movieText">${data[i].plot} </p>
+                                                <button id="edit" type="button">EDIT</button>
+                                                <button id="delete" type="button">DELETE</button>
+                                                <button id="watch" type="button">ADD TO WATCH</button>
+                                                <div class="stars">
+                                                     <span class="fa fa-star checked"></span>
+                                                     <span class="fa fa-star checked"></span>
+                                                     <span class="fa fa-star checked"></span>
+                                                     <span class="fa fa-star"></span>
+                                                     <span class="fa fa-star"></span>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                   </div>`
+            $('.movieCards').append(filmCard);
         }
-
-    })
+    });
 }
+
+
+
 
 $('#wantToWatch').click(function () {
     let movieInput = $('#search').val()
@@ -36,7 +46,7 @@ $('#wantToWatch').click(function () {
 
         const newFilmCard = {
             title: data.results[0].title,
-            poster: `http://image.tmdb.org/t/p/w154${data.results[0].poster_path}`,
+            poster: `http://image.tmdb.org/t/p/original${data.results[0].poster_path}`,
             plot: data.results[0].overview,
         }
         const options = {
