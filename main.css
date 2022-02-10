@@ -3,7 +3,8 @@ html {
 }
 
 body {
-    background-color: gray;
+    background-color: black;
+    color: white;
 }
 
 
@@ -13,11 +14,13 @@ body {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 80px;
+
 }
 
 .card-img-top{
     max-width: fit-content;
     max-height: fit-content;
+    box-shadow: 0 0 20px 0 grey;
 }
 
 .flip-card {
@@ -26,6 +29,7 @@ body {
     width: 300px;
     height: 200px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
 }
 
 /* This container is needed to position the front and back side */
@@ -54,7 +58,7 @@ body {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-    background-color: #bbb;
+    background-color: white;
     color: black;
 }
 
