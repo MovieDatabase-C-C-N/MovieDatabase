@@ -25,7 +25,7 @@ function renderMovies(db) {
                                                 <h5 class="movieTitle">${db[i].original_title}</h5>
                                                 <p class="date" >Release date : ${db[i].release_date}</p>
                                                 <p class="movieText">${db[i].overview} </p>
-                                                <button id="edit" type="button">EDIT</button>
+                                                <button type="button" id="edit" >EDIT</button>
                                                 <button id="${db[i].id}" type="button" onclick="deleteMe(${db[i].id})">DELETE</button>
                                                 <div class="stars">
                                                      <span class="fa fa-star checked"></span>
@@ -91,7 +91,6 @@ function deleteMe(id){
                 })
             })
 }
-
 
 
 
