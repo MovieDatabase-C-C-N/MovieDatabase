@@ -27,7 +27,6 @@ function renderMovies(db) {
                                                 <p class="movieText">${db[i].overview} </p>
                                                 <button id="edit" type="button">EDIT</button>
                                                 <button id="${db[i].id}" type="button" onclick="deleteMe(${db[i].id})">DELETE</button>
-                                              
                                                 <div class="stars">
                                                      <span class="fa fa-star checked"></span>
                                                      <span class="fa fa-star checked"></span>
@@ -64,6 +63,7 @@ $('#addMovie').on('click', function () {
                         .then(response => response.json())
                         .then(db => {
                             console.log(db)
+                            $('.movieCards').empty()
                             renderMovies(db)
                         })
                 })
