@@ -81,6 +81,15 @@ function deleteMe(id){
     }).then(response => {
         console.log(response.json())
     })
+        .then(function () {
+            let myGlitchRequest = fetch(glitchURL)
+                .then(response => response.json())
+                .then(db => {
+                    console.log(db)
+                    // renderMovies(db)
+                    location.reload()
+                })
+            })
 }
 
 
