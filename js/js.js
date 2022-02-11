@@ -26,8 +26,8 @@ function renderMovies(db) {
                                                 <p class="date" >Release date : ${db[i].release_date}</p>
                                                 <p class="movieText">${db[i].overview} </p>
                                                 <button id="edit" type="button">EDIT</button>
-                                                <button id="delete" type="button">DELETE</button>
-                                                <button id="watch" type="button">ADD TO WATCH</button>
+                                                <button id="${db[i].id}" type="button" onclick="deleteMe(${db[i].id})">DELETE</button>
+                                              
                                                 <div class="stars">
                                                      <span class="fa fa-star checked"></span>
                                                      <span class="fa fa-star checked"></span>
@@ -71,3 +71,18 @@ $('#addMovie').on('click', function () {
         })
 
 })
+
+function deleteMe(id){
+    console.log("hello")
+    console.log(id)
+    fetch(`${glitchURL}/${id}`, {
+        method: 'DELETE',
+
+    }).then(response => {
+        console.log(response.json())
+    })
+}
+
+
+
+
