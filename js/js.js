@@ -67,7 +67,15 @@ $('#addMovie').on('click', function () {
                     'Content-Type': 'application/json',
                 }
             })
+                .then(function () {
+                    let myGlitchRequest = fetch(glitchURL)
+                        .then(response => response.json())
+                        .then(db => {
+                            console.log(db)
+                            renderMovies(db)
+                        })
+                })
+
         })
-        // .then(db => renderMovies(db))
 
 })
