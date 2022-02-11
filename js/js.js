@@ -43,7 +43,8 @@ function renderMovies(db) {
 
 
 // GET ADDED MOVIE OBJECT FROM API
-$('#addMovie').on('click', function () {
+$('#addMovie').on('click', function (e) {
+    e.preventDefault()
     let movieInput = $('#addName').val()
     console.log(movieInput)
 
