@@ -1,17 +1,26 @@
 const glitchURL = "https://tartan-quill-libra.glitch.me/movies";
 
-let movieDB = $.get(glitchURL);
-    movieDB.done(function(data){
-    console.log(data)
-        renderMovies(data)
-})
+
+let myGlitchRequest = fetch(glitchURL)
+    .then(response => response.json())
+    .then(db => {
+        console.log(db)
+        renderMovies(db)
+    })
+
+
+// let movieDB = $.get(glitchURL);
+//     movieDB.done(function(data){
+//     console.log(data)
+//         renderMovies(data)
+// })
 
 
 // GENERATE MOVIE CARDS
 function renderMovies(db) {
 
-        for (let i = 0; i < db.length ; i++) {
-            let filmCard = `
+    for (let i = 0; i < db.length; i++) {
+        let filmCard = `
                                     <div class="flip-card">
                                         <div class="flip-card-inner">
                                             <div class="flip-card-front">
@@ -34,21 +43,31 @@ function renderMovies(db) {
                                             </div>
                                         </div>
                                    </div>`
-            $('.movieCards').append(filmCard);
-        }
+        $('.movieCards').append(filmCard);
+    }
 }
 
 
-
-
-
 // GET ADDED MOVIE OBJECT FROM API
-$('#addMovie').on ('click', function () {
+$('#addMovie').on('click', function () {
     let movieInput = $('#addName').val()
     console.log(movieInput)
 
-    $.get(`https://api.themoviedb.org/3/search/movie?api_key=36bae576330e105013948f7fc0b734c0&language=en-US&query=${movieInput}&page=1&include_adult=false`).done(function (db) {
-        console.log(db);
+    // $.get(`https://api.themoviedb.org/3/search/movie?api_key=36bae576330e105013948f7fc0b734c0&language=en-US&query=${movieInput}&page=1&include_adult=false`).done(function (db) {
+    //     console.log(db);
+// })
+    let tmdbRequest = fetch(`https://api.themoviedb.org/3/search/movie?api_key=36bae576330e105013948f7fc0b734c0&language=en-US&query=${movieInput}&page=1&include_adult=false`)
+        .then(response => response.json())
+        .then(db => {
+            console.log(db)
+            fetch(glitchURL, {
+                method: 'POST',
+                body: JSON.stringify(db.results[0]),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+        })
+        // .then(db => renderMovies(db))
 
-    })
 })
