@@ -1,19 +1,14 @@
 const glitchURL = "https://tartan-quill-libra.glitch.me/movies";
 
-
-let myGlitchRequest = fetch(glitchURL)
-    .then(response => response.json())
-    .then(db => {
-        console.log(db)
-        renderMovies(db)
-    })
-
-
-// let movieDB = $.get(glitchURL);
-//     movieDB.done(function(data){
-//     console.log(data)
-//         renderMovies(data)
-// })
+setTimeout(function(){
+    let myGlitchRequest = fetch(glitchURL)
+        .then(response => response.json())
+        .then(db => {
+            console.log(db)
+            renderMovies(db)
+            $('#loader').toggleClass('load-man')
+        })
+}, 3000)
 
 
 // GENERATE MOVIE CARDS
@@ -53,9 +48,6 @@ $('#addMovie').on('click', function () {
     let movieInput = $('#addName').val()
     console.log(movieInput)
 
-    // $.get(`https://api.themoviedb.org/3/search/movie?api_key=36bae576330e105013948f7fc0b734c0&language=en-US&query=${movieInput}&page=1&include_adult=false`).done(function (db) {
-    //     console.log(db);
-// })
     let tmdbRequest = fetch(`https://api.themoviedb.org/3/search/movie?api_key=36bae576330e105013948f7fc0b734c0&language=en-US&query=${movieInput}&page=1&include_adult=false`)
         .then(response => response.json())
         .then(db => {
