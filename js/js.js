@@ -22,10 +22,10 @@ function renderMovies(db) {
                                                 <img class="card-img-top" src="http://image.tmdb.org/t/p/original/${db[i].poster_path}" alt="">
                                             </div>
                                             <div class="flip-card-back">
-                                                <h5 class="movieTitle">${db[i].original_title}</h5>
+                                                <h5 class="movieTitle">${db[i].title}</h5>
                                                 <p class="date" >Release date : ${db[i].release_date}</p>
                                                 <p class="movieText">${db[i].overview} </p>
-                                                <button type="button" id="modal${db[i].id}" class="modal-button" data-toggle="modal" data-target="#Modal">EDIT</button>
+                                                <button type="button" data-value=${db[i].id} class="edit modal-button" data-toggle="modal" data-target="#Modal">EDIT</button>
                                                 <button id="${db[i].id}" type="button" onclick="deleteMe(${db[i].id})">DELETE</button>
                                                 <div class="stars">
                                                      <span class="fa fa-star checked"></span>
@@ -47,6 +47,77 @@ function renderMovies(db) {
         })
 
     }
+
+    $('.edit').click( function (e){
+        e.preventDefault()
+        id = $(this).attr('data-value')
+        $('.createModals').append(`
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit This Movie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title" class="col-form-label">Title: </label>
+                        <input type="text" class="form-control" id="title" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-form-label">Description: </label>
+                        <input type="text" class="form-control" id="description"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-dark" data-dismiss="modal" onclick='$("form").trigger("reset")'>Nevermind</button>
+                <button type="button" class="btn btn-primary" id="edit" data-value=${id}>Complete Edit</button>
+
+            </div>
+        </div>
+    </div>
+</div>`)
+
+        $('#edit').click(function (){
+    let ID = $(this).attr('data-value')
+    let title = $('#title').val()
+    let description = $('#description').val()
+    console.log(title)
+    console.log(description)
+            console.log(ID)
+
+
+
+        // sending PUT request with fetch API in javascript
+        fetch(`${glitchURL}/${ID}` , {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            method: "PATCH",
+
+            // Fields that to be updated are passed
+            body: JSON.stringify({
+                title: title,
+                overview: description
+            })
+        })
+            .then(function (response) {
+
+                // console.log(response);
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                location.reload()
+            })
+        })
+    })
 }
 
 
@@ -107,12 +178,46 @@ function deleteMe(id){
             })
 }
 
-function getInfoFromModal(){
-    let title = $('#title')[0].placeholder
-    let description = $('#description')[0].value
-    console.log(title)
-    console.log(description)
-}
+
+
+
+
+// function getInfoFromModal(id){
+//
+//     let title = $('#title').val()
+//     let description = $('#description').val()
+//     console.log(title)
+//     console.log(description)
+//
+//
+//
+//         // sending PUT request with fetch API in javascript
+//         fetch(`${glitchURL}/${id}` , {
+//             headers: {
+//                 Accept: "application/json",
+//                 "Content-Type": "application/json"
+//             },
+//             method: "PATCH",
+//
+//             // Fields that to be updated are passed
+//             body: JSON.stringify({
+//                 title: title,
+//                 description: description
+//             })
+//         })
+//             .then(function (response) {
+//
+//                 // console.log(response);
+//                 return response.json();
+//             })
+//             .then(function (data) {
+//                 console.log(data);
+//             });
+//     }
+
+
+
+
 
 
 
