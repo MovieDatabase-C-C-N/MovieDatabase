@@ -25,7 +25,7 @@ function renderMovies(db) {
                                                 <h5 class="movieTitle">${db[i].original_title}</h5>
                                                 <p class="date" >Release date : ${db[i].release_date}</p>
                                                 <p class="movieText">${db[i].overview} </p>
-                                                <button type="button" id="modal${db[i].id}" class="modal-button" data-toggle="modal" data-target="#exampleModal">EDIT</button>
+                                                <button type="button" id="modal${db[i].id}" class="modal-button" data-toggle="modal" data-target="#Modal">EDIT</button>
                                                 <button id="${db[i].id}" type="button" onclick="deleteMe(${db[i].id})">DELETE</button>
                                                 <div class="stars">
                                                      <span class="fa fa-star checked"></span>
