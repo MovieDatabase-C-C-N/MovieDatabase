@@ -107,5 +107,14 @@ function deleteMe(id){
             })
 }
 
+function getInfoFromModal(){
+    let title = $('#title')[0].placeholder
+    let description = $('#description')[0].value
+    console.log(title)
+    console.log(description)
+}
+
+
+
 
 
