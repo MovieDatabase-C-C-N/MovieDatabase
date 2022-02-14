@@ -82,8 +82,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-dismiss="modal" >Nevermind</button>
+
+                <button type="button" class="btn btn-dark" data-dismiss="modal" onclick='$("form").trigger("reset")'>Nevermind</button>
                 <button type="button" class="btn btn-primary" id="edit" onclick="getInfoFromModal()">Complete Edit</button>
+
             </div>
         </div>
     </div>
