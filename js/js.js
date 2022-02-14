@@ -43,7 +43,7 @@ function renderMovies(db) {
 
         $(`#modal${db[i].id}`).on('click', function (){
             $(`#title`).attr('placeholder', `${db[i].original_title}`)
-            $('#description').attr('placeholder', `${db[i].overview}`)
+            $('#description').val(`${db[i].overview}`)
         })
 
     }
