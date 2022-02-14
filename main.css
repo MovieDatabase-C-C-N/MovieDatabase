@@ -63,11 +63,11 @@ background-color: #136F63;
     position: absolute;
     width: fit-content;
     height: fit-content;
-    -webkit-backface-visibility: hidden; /* Safari */
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
+/* Style the front side */
 .flip-card-front {
     background-color: white;
     color: black;
