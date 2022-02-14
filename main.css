@@ -29,7 +29,9 @@ background-color: dodgerblue;
 .card-img-top{
     max-width: fit-content;
     max-height: fit-content;
-    box-shadow: 0 0 5px 0 grey;
+    box-shadow: 0 0 2px 0 white;
+    border: 0;
+    border-radius: .2rem;
 }
 
 .flip-card {
@@ -37,7 +39,7 @@ background-color: dodgerblue;
     margin-bottom: 300px;
     width: 300px;
     height: 200px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    perspective: 1000px;
 
 }
 
@@ -101,18 +103,7 @@ background-color: dodgerblue;
     position: absolute;
     top: 50%;
     width: 200px;
-    /**
-      * Our pseudo elements create the head pieces
-      *
-      * They are near identical minus subtle differences in animation and border
-      * styling
-    */
-    /**
-    * The top head piece
-    */
-    /**
-    * The bottom head piece
-    */ }
+     }
 .load-man:after, .load-man:before {
     content: '';
     position: absolute;
@@ -166,12 +157,6 @@ background-color: dodgerblue;
 /*END OF LOADING ANIMATION*/
 
 
-
-/*QUERIES*/
-@media screen and (max-width: 425px) {
-
-
-}
 
 
 /*MODALS*/

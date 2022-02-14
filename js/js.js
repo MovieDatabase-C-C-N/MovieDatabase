@@ -1,6 +1,6 @@
 const glitchURL = "https://tartan-quill-libra.glitch.me/movies";
 
-setTimeout(function(){
+setTimeout(function () {
     let myGlitchRequest = fetch(glitchURL)
         .then(response => response.json())
         .then(db => {
@@ -39,16 +39,9 @@ function renderMovies(db) {
                                    </div>`
 
         $('.movieCards').append(filmCard);
-
-
-        $(`#modal${db[i].id}`).on('click', function (){
-            $(`#title`).attr('placeholder', `${db[i].original_title}`)
-            $('#description').val(`${db[i].overview}`)
-        })
-
     }
 
-    $('.edit').click( function (e){
+    $('.edit').click(function (e) {
         e.preventDefault()
         id = $(this).attr('data-value')
         $('.createModals').append(`
@@ -65,11 +58,11 @@ function renderMovies(db) {
                 <form>
                     <div class="form-group">
                         <label for="title" class="col-form-label">Title: </label>
-                        <input type="text" class="form-control" id="title" placeholder="">
+                        <input type="text" class="form-control" id="title" placeholder="New Title">
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-form-label">Description: </label>
-                        <input type="text" class="form-control" id="description"></input>
+                        <input type="text" class="form-control" id="description" placeholder="New Description">
                     </div>
                 </form>
             </div>
@@ -83,46 +76,42 @@ function renderMovies(db) {
     </div>
 </div>`)
 
-        $('#edit').click(function (){
-    let ID = $(this).attr('data-value')
-    let title = $('#title').val()
-    let description = $('#description').val()
-    console.log(title)
-    console.log(description)
+
+        $('#edit').click(function () {
+            let ID = $(this).attr('data-value')
+            let title = $('#title').val()
+            let description = $('#description').val()
+            console.log(title)
+            console.log(description)
             console.log(ID)
 
 
+            // sending PUT request with fetch API in javascript
+            fetch(`${glitchURL}/${ID}`, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                method: "PATCH",
 
-        // sending PUT request with fetch API in javascript
-        fetch(`${glitchURL}/${ID}` , {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            method: "PATCH",
+                // Fields that to be updated are passed
+                body: JSON.stringify({
+                    title: title,
+                    overview: description
+                })
+            })
+                .then(function (response) {
 
-            // Fields that to be updated are passed
-            body: JSON.stringify({
-                title: title,
-                overview: description
-            })
-        })
-            .then(function (response) {
-
-                // console.log(response);
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-                location.reload()
-            })
+                    // console.log(response);
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    location.reload()
+                })
         })
     })
 }
-
-
-
-
 
 
 // GET ADDED MOVIE OBJECT FROM API
@@ -158,7 +147,7 @@ $('#addMovie').on('click', function (e) {
 
 
 // DELETE BUTTON FUNCTIONALITY
-function deleteMe(id){
+function deleteMe(id) {
     console.log("hello")
     console.log(id)
     fetch(`${glitchURL}/${id}`, {
@@ -175,45 +164,12 @@ function deleteMe(id){
                     // renderMovies(db)
                     location.reload()
                 })
-            })
+        })
 }
 
 
 
 
-
-// function getInfoFromModal(id){
-//
-//     let title = $('#title').val()
-//     let description = $('#description').val()
-//     console.log(title)
-//     console.log(description)
-//
-//
-//
-//         // sending PUT request with fetch API in javascript
-//         fetch(`${glitchURL}/${id}` , {
-//             headers: {
-//                 Accept: "application/json",
-//                 "Content-Type": "application/json"
-//             },
-//             method: "PATCH",
-//
-//             // Fields that to be updated are passed
-//             body: JSON.stringify({
-//                 title: title,
-//                 description: description
-//             })
-//         })
-//             .then(function (response) {
-//
-//                 // console.log(response);
-//                 return response.json();
-//             })
-//             .then(function (data) {
-//                 console.log(data);
-//             });
-//     }
 
 
 
